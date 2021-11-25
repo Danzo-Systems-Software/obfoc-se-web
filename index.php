@@ -1,23 +1,26 @@
 <?php
   session_start();
-  $_SESSION['username'] = "Hirek";
-  //session_destroy();
+  //$_SESSION['username'] = "Hirek";
+  if($_SESSION["isdestroyed"]==true){
+    session_destroy();
+  }
   ?>
 <html>
   <head>
     <title>Sfoc.SE - Twój serwis informacyjny</title>
+    <link href="css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="our-css/index.css">
   </head>
   <body>
     <!-- navbar z przyciskami -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">Obfoć.SE</a>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 999;">
+          <a class="navbar-brand" href="#"><i class="fas fa-camera-retro"></i> Obfoć.SE</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -39,7 +42,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Dokumentacja API</a>
-                  <a class="dropdown-item" href="#">Repozytorium na githubie</a>
+                  <a class="dropdown-item" href="#"><i class="fab fa-github"></i> Repozytorium na githubie</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Jak nas wspomóc?</a>
                 </div>
@@ -50,9 +53,10 @@
               <?php
                 if(isset($_SESSION["username"])){
                   
-                  echo("Witaj ".$_SESSION["username"]."!");
+                  echo("Witaj ".$_SESSION["username"]."! ");
+                  echo('<a type="button" class="btn btn-primary btn-sm" href="logout.php"><i class="fas fa-sign-out-alt"></i> Wyloguj</a>');
                 } else {
-                  echo("Witaj anonimowy mikolu!");
+                  echo('<a type="button" class="btn btn-primary btn-sm" href="login.php"><i class="fab fa-facebook"></i> Zaloguj się przez facebooka</a>');
                 }
               ?>
           </span>
@@ -62,18 +66,29 @@
       <!-- map -->
       <div class="container">
           <div id="map"></div>
+          
+          
           <script>
           // map base script
-          var mapTypeId = "mapbox/dark-v10"
-            var mymap = L.map('map').setView([51.985, 19.907], 7);
-            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: mapTypeId,
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'sk.eyJ1IjoicGFubXJoZXJvYnJpbmUiLCJhIjoiY2t3ZHU3d3g1MmFxZzJvcGFwNmpkeHVsZiJ9.pE6ugI6QMB678a00jTz3Sg'
-}).addTo(mymap);
+          var mapTypeId = "mapbox/dark-v10" // this variable changes map type
+
+          var mymap = L.map('map', {
+            maxZoom: 20,
+            minZoom: 5,
+            zoomControl: false
+
+          }).setView([51.985, 19.907], 7);
+          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+              attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+              maxZoom: 18,
+              id: mapTypeId,
+              tileSize: 512,
+              zoomOffset: -1,
+              accessToken: 'sk.eyJ1IjoicGFubXJoZXJvYnJpbmUiLCJhIjoiY2t3ZHU3d3g1MmFxZzJvcGFwNmpkeHVsZiJ9.pE6ugI6QMB678a00jTz3Sg'
+          }).addTo(mymap);
+          
+          var rare_vehicles = L.layerGroup();
+
 
           // definition of locomotive icon
           var locoIcon = L.icon({
@@ -102,6 +117,10 @@
         $(window).on('load', function() {
             $('#disclaimerModal').modal('show');
         });
+
+
+        // Zmiana pozycji zoomu
+
       </script>
       <!-- Page under developement disclaimer -->
       <div class="modal fade" id="disclaimerModal" tabindex="-1" role="dialog" aria-labelledby="disclaimerModalLabel" aria-hidden="true">
@@ -157,10 +176,4 @@
         </div>
       </div>
   </body>
-  <script>
-    mymap.on('dbclick', function(e) {
-      
-      addMarker([e.latlng.lat, e.latlng.lng], "EP07-338", "25.11.2021 8:36:49", "TLK Kociewie");
-    })
-  </script>
 </html>
