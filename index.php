@@ -1,34 +1,21 @@
 <?php
   session_start();
   $_SESSION['username'] = "Hirek";
-?>
-<style>
-#map {
-  height: 94%;
-  width: 100% !important;
-  left: 0px;
-  position: absolute;
-}
-
-.footerMain {
-  background-color: #111111;
-}
-</style>
+  //session_destroy();
+  ?>
 <html>
   <head>
-      <title>Sfoc.SE - Twój serwis informacyjny</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-   crossorigin=""/>
-   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script>
+    <title>Sfoc.SE - Twój serwis informacyjny</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <link rel="stylesheet" href="css/index.css">
   </head>
   <body>
+    <!-- navbar z przyciskami -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="#">Obfoć.SE</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,13 +25,13 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Mapka <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.php">Mapka <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#addInfo" data-toggle="modal" data-target="#addInfo">Zaaktualizuj pozycję pojazdu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">O nas</a>
+                <a class="nav-link" href="aboutus.php">O nas</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,22 +46,24 @@
               </li>
             </ul>
             <span class="navbar-text">
-            <?php
-              if($_SESSION["username"] != NULL){
-                echo("Witaj Hirek!");
-              }
-            ?>
+            <!-- user account space -->
+              <?php
+                if(isset($_SESSION["username"])){
+                  
+                  echo("Witaj ".$_SESSION["username"]."!");
+                } else {
+                  echo("Witaj anonimowy mikolu!");
+                }
+              ?>
           </span>
 
           </div>
         </nav>
-      <!-- TU JEST JUZ MAPKA -->
+      <!-- map -->
       <div class="container">
           <div id="map"></div>
           <script>
-
-
-
+          // map base script
           var mapTypeId = "mapbox/dark-v10"
             var mymap = L.map('map').setView([51.985, 19.907], 7);
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -86,13 +75,15 @@
     accessToken: 'sk.eyJ1IjoicGFubXJoZXJvYnJpbmUiLCJhIjoiY2t3ZHU3d3g1MmFxZzJvcGFwNmpkeHVsZiJ9.pE6ugI6QMB678a00jTz3Sg'
 }).addTo(mymap);
 
+          // definition of locomotive icon
           var locoIcon = L.icon({
                       iconUrl: 'train.svg',
                       iconSize: 24,
                       popupAnchor: [0, 0],
                       tooltipAnchor: [0, 0]
                   });
-
+          
+          // function for adding markers with popup
           function addMarker(pos, vehicle, datetime, remarks){
             var marker = L.marker(pos, { icon: locoIcon }).addTo(mymap);
             if (typeof remarks == 'undefined'){
@@ -112,7 +103,7 @@
             $('#disclaimerModal').modal('show');
         });
       </script>
-      <!-- Strona moze nie dzialac disclaimer -->
+      <!-- Page under developement disclaimer -->
       <div class="modal fade" id="disclaimerModal" tabindex="-1" role="dialog" aria-labelledby="disclaimerModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">

@@ -1,0 +1,19 @@
+#map {
+    height: 94%;
+    width: 100% !important;
+    left: 0px;
+    position: absolute;
+}
+
+.footerMain {
+    background-color: #111111;
+}
+
+.nav-link:hover {
+    transition: 0.15s;
+    /*color: #ffffff;*/
+}
+
+.nav-link {
+    transition: 0.15s;
+}
