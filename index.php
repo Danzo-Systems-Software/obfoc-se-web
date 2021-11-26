@@ -180,7 +180,7 @@
       <script>
       // Adding markers from DB
       var request = new XMLHttpRequest();
-      request.open('GET', 'http://26.76.194.230:90/vehiclePositions', true);
+      request.open('GET', 'http://178.33.45.181:90/vehiclePositions', true);
 
       request.onload = function () {
           var data = JSON.parse(this.response)
