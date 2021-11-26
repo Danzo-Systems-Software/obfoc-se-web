@@ -7,7 +7,7 @@
   ?>
 <html>
   <head>
-    <title>Sfoc.SE - Twój serwis informacyjny</title>
+    <title>Obfoć.SE - Twój serwis informacyjny</title>
     <link href="css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -57,7 +57,7 @@
                   echo("Witaj ".$_SESSION["username"]."! ");
                   echo('<a type="button" class="btn btn-primary btn-sm" href="logout.php"><i class="fas fa-sign-out-alt"></i> Wyloguj</a>');
                 } else {
-                  echo('<a type="button" class="btn btn-primary btn-sm" href="login.php"><i class="fab fa-facebook"></i> Zaloguj się przez facebooka</a>');
+                  echo('<a type="button" class="btn btn-primary btn-sm" href="login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i> Zaloguj się</a>');
                 }
               ?>
           </span>

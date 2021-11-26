@@ -13,7 +13,7 @@ session_start();
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="our-css/aboutus.css">
         <link href="css/all.css" rel="stylesheet">
-        <title>O nas - Sfoc.SE</title>
+        <title>O nas - Obfoć.SE</title>
     </head>
     <body>  
     <!-- navbar z przyciskami -->
@@ -54,7 +54,7 @@ session_start();
                   echo("Witaj ".$_SESSION["username"]."! ");
                   echo('<a type="button" class="btn btn-primary btn-sm" href="logout.php"><i class="fas fa-sign-out-alt"></i> Wyloguj</a>');
                 } else {
-                  echo('<a type="button" class="btn btn-primary btn-sm" href="login.php"><i class="fab fa-facebook"></i> Zaloguj się przez facebooka</a>');
+                  echo('<a type="button" class="btn btn-primary btn-sm" href="login.php"><i class="fa-solid fa-right-to-bracket"></i> Zaloguj się</a>');
                 }
               ?>
           </span>
