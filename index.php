@@ -15,6 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="our-css/index.css">
   </head>
   <body>
@@ -175,5 +176,33 @@
           </div>
         </div>
       </div>
+
+      <script>
+      // Adding markers from DB
+      var request = new XMLHttpRequest();
+      request.open('GET', 'http://26.76.194.230:90/vehiclePositions', true);
+
+      request.onload = function () {
+          var data = JSON.parse(this.response)
+        if (request.status == 200) {
+          data.forEach(position => {
+            var vehicleName = (position.vehicle);
+            var pos = [position.latitude, position.longitude]
+            var update = position.postDate;
+            var posterNotes = position.posterNotes
+            if (posterNotes == ""){
+              addMarker(pos, vehicleName, update)
+            }
+            else{
+              addMarker(pos, vehicleName, update, posterNotes)
+            }
+          })
+        } else {
+          console.log('error')
+}
+      }
+
+      request.send();
+    </script>
   </body>
 </html>
