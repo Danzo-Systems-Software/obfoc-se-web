@@ -42,7 +42,7 @@ session_start();
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Dokumentacja API</a>
-                  <a class="dropdown-item" href="#"><i class="fab fa-github"></i> Repozytorium na githubie</a>
+                  <a class="dropdown-item" href="https://github.com/Danzo-Systems-Software/obfoc-se-web"><i class="fab fa-github"></i> Repozytorium na githubie</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Jak nas wspomóc?</a>
                 </div>
