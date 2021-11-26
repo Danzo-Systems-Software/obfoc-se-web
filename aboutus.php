@@ -16,6 +16,13 @@ session_start();
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>O nas - Obfoć.SE</title>
+        <link rel="icon" type="image/x-icon" href="favicon.png">
+        <!-- OpenGraph meta tags -->
+        <emta name="og:title" content="O Obfoć.SE i prowadzących">
+        <meta name="og:url" content="http://obfoć.se/">
+        <meta name="og:image" content="favicon.png">
+        <meta name="og:description" content="Strona poświęcona wysyłaniu sobie informacji o pociągach w Polsce i w Europie. W dużym skrócie to takie Co i gdzie jedzie z mapką :)">
+        <meta name="theme-color" content="#42f598">
     </head>
     <body>  
     <!-- navbar z przyciskami -->

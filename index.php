@@ -9,6 +9,7 @@
 <html lang="pl">
   <head>
     <title>Obfoć.SE - Twój serwis informacyjny</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/all.css" rel="stylesheet">
@@ -20,6 +21,12 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="our-css/index.css">
+    <!-- OpenGraph meta tags -->
+    <emta name="og:title" content="Obfoć.SE">
+    <meta name="og:url" content="http://obfoć.se/">
+    <meta name="og:image" content="favicon.png">
+    <meta name="og:description" content="Strona poświęcona wysyłaniu sobie informacji o pociągach w Polsce i w Europie. W dużym skrócie to takie Co i gdzie jedzie z mapką :)">
+    <meta name="theme-color" content="#42f598">
   </head>
   <body>
     <!-- navbar z przyciskami -->
