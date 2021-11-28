@@ -65,6 +65,10 @@
                             </div>
                         </div>
                     </form>
+                    <a class="btn" href="{{ url('auth/facebook') }}"
+                        style="background: #3B5499; display:block; color: #ffffff; margin:15px auto; padding: 10px; width: 50%; text-align: center; display: block; border-radius:3px;">
+                        Login with Facebook
+                    </a>
                 </div>
             </div>
         </div>
