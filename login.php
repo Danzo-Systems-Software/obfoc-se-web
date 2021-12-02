@@ -51,6 +51,7 @@
                 <br>
                 <button type="button" class="btn btn-success  btn-lg"><i class="fas fa-sign-in-alt"></i> Zaloguj</button>
                 <a href="" class="btn btn-link">Zapomniałem hasła</a>
+                <a href="" class="btn btn-link">Zarejestruj się</a>
 
             </div>
             <br/>
@@ -63,13 +64,14 @@
                     <button class="btn btn-danger  btn-lg" type="button"><i class="fab fa-google"></i> Zaloguj przez google</button>
                     <button class="btn btn-discord  btn-lg" type="button"><i class="fab fa-discord"></i> Zaloguj przez discorda</button>
                 </div>
-        </div>
-        <footer>
-            <br>
-            <center>
-            &copy 2021 - <?php echo date("Y"); ?> by Danzo Systems Software
-            </center>
-        </footer>
+            </div>
+
+            <footer>
+                <br>
+                <center>
+                &copy 2021 - <?php echo date("Y"); ?> by Danzo Systems Software
+                </center>
+            </footer>
     </div>
   </body>
 </html>
