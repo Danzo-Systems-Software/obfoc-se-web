@@ -29,7 +29,7 @@
                     <a class="navbar-brand" href="#">Logowanie do Obfoć.SE</a> 
                 </div>
             </ul>
-            <a href="index.php" class="btn btn-success">Powrót do strony głównej</a>
+            <a href="index.php" class="btn btn-success btn-sm"><<</a>
         </nav>
     
         <div class="row">
