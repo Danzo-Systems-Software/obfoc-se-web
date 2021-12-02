@@ -37,10 +37,10 @@ session_start();
               <li class="nav-item">
                 <a class="nav-link" href="index.php">Mapka</a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="aboutus.php">O nas <span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="zestawienia.php">Zestawienia</a>
               </li>
               <li class="nav-item dropdown">
@@ -70,39 +70,10 @@ session_start();
           </div>
         </nav>
         <div class="container">
-            <h1>Skąd pomysł na Obfoć.SE</h1>
-            <p>Przeglądając grupy informacyjne o składach na facebooku jakimi są np. 
-            "<a href="https://www.facebook.com/groups/868055790230479/">Co i gdzie jedzie?</a>"
-            w małej grupce entuzjastów kolei i informatyki postanowiliśmy spróbować sprawdzić, czy podołamy takiemu wyzwaniu jakim jest napisanie
-             właśnie takiej aplikacji jaką jest Obfoć.SE bez wsparcia profesjonalnych programistów. Jeśli czytasz tą wiadomość to znaczy, że się nam udało
-             stworzyć aplikację, która będzie przystępna chociaż jakiejś grupce pasjonatów kolei.</p> 
-
-             <p>Naszym celem jest to, aby aplikacja była jak najbardziej przejrzysta, prosta w obsłudze i otwarta na propozycje społeczności, które można
-             składac <a href="https://github.com/Danzo-Systems-Software/obfoc-se-web/issues">w zakładce issues na githubie projektu</a>.</p>
-
-             <h1>Kim tak właściwie jesteśmy</h1>
-             <p>
-             Szrzerze mówiąc to projekt prowadzą dwie osoby.
-             <ul>
-                <li>Oskar "Hirek" Jagodziński - pomysłodawca i głowny programista</li>
-                <li>Stanisław "Mruczący" Radomski - również główny programista</li>
-             </ul>
-             To, że na tej liście są tylko dwie osoby może się jeszcze zmienić, dlatego <a href="">tu jest pełna lista twórców</a>.
-             Jesteśmy otwarci na współtwórców.
-            Można napisać do nas na discordzie (Hirek#5674, lub Mrzuczący#5313)
-             </p>
-
-             <h1>Tu trochę technicznie<h1>
-             <h4>Jakie technologie wykorzystujemy</h4>
-             <p>
-                Umieszczamy tą informację ze względu na to, że mogą się znaleźć osoby, które to może interesować (xD). Pełna lista o tu:
-                <ul>
-                    <li><a href="https://getbootstrap.com/">Bootstarp 4.0.0</a></li>
-                    <li><a href="https://popper.js.org/">Pooper 1.12.9</a></li>
-                    <li><a href="https://jquery.com/">jQuerry 3.2.1</a></li>
-                    <li><a href="https://leafletjs.com/">Leafletjs 1.7.1</a></li>
-                </ul>
-            </p>
+            <br />
+            <div class="alert alert-danger" role="alert">
+                Sekcja w budowie. Przewidywany termin uruchomienia dopiero się pojawi, jak skończymy główną część strony
+            </div>
         </div>
     </body>
 </html>
