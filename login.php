@@ -33,7 +33,7 @@
         </nav>
     
         <div class="row">
-            <div class="col">
+            <div class="col-md-6">
                 <h3>Logowanie kontem Obfoć.SE</h3>
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -47,18 +47,16 @@
                 <button type="button" class="btn btn-success  btn-lg"><i class="fa-solid fa-right-to-bracket"></i>Zaloguj</button>
                 <a href="" class="btn btn-link">Zapomniałem hasła</a>
             </div>
-
-        <div class="col">
-            <h3>lub wybierz inną metodę logowania:</h3>
-            <br>
-            <div class="d-grid gap-2">
-                <button class="btn btn-primary btn-lg" type="button">Zaloguj z facebookiem</button>
-                <button class="btn btn-danger  btn-lg" type="button">Zaloguj przez google</button>
-                <button class="btn btn-info  btn-lg" type="button">Zaloguj przez discorda</button>
-            </div>
+            <div class="col-md-6">
+                <h3>lub wybierz inną metodę logowania:</h3>
+                <br>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary btn-lg" type="button">Zaloguj z facebookiem</button>
+                    <button class="btn btn-danger  btn-lg" type="button">Zaloguj przez google</button>
+                    <button class="btn btn-info  btn-lg" type="button">Zaloguj przez discorda</button>
+                </div>
         </div>
         <footer>
-
             <br>
             <center>
             &copy 2021 - <?php echo date("Y"); ?> by Danzo Systems Software
