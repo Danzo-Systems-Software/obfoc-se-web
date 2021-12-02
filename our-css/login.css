@@ -1,0 +1,17 @@
+.btn-discord, .btn-discord:visited {
+    background-color: #5865F2 !important;
+    color: white;
+}
+.btn-discord:hover, .btn-discord:active {
+    background-color: #3c45a8 !important;
+    color: white;
+}
+.btn-facebook, .btn-facebook:visited {
+    background-color: #1877F2 !important;
+    color: white;
+}
+.btn-facebook:hover, .btn-facebook:active {
+    background-color: #0F4C9C !important;
+    color: white;
+}
+

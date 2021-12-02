@@ -26,6 +26,8 @@ session_start();
     </head>
     <body>  
     <!-- navbar z przyciskami -->
+    <!-- navbar z przyciskami -->
+    <!-- navbar z przyciskami -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 999;">
           <a class="navbar-brand" href="#"><i class="fas fa-camera-retro"></i> Obfoć.SE</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,23 +37,23 @@ session_start();
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="index.php">Mapka</a>
+                <a class="nav-link" href="index.php"><i class="far fa-map"></i> Mapka <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="aboutus.php">O nas <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="aboutus.php"><i class="far fa-address-card"></i> O nas</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="zestawienia.php">Zestawienia</a>
+                <a class="nav-link" href="zestawienia.php"><i class="fas fa-train"></i> Zestawienia</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dla deweloperów
+                <i class="fas fa-file-code"></i> Dla deweloperów
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Dokumentacja API</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-globe-americas"></i> Dokumentacja API</a>
                   <a class="dropdown-item" href="https://github.com/Danzo-Systems-Software/obfoc-se-web"><i class="fab fa-github"></i> Repozytorium na githubie</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Jak nas wspomóc?</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-dollar-sign"></i> Jak nas wspomóc?</a>
                 </div>
               </li>
             </ul>
@@ -63,7 +65,7 @@ session_start();
                   echo("Witaj ".$_SESSION["username"]."! ");
                   echo('<a type="button" class="btn btn-primary btn-sm" href="logout.php"><i class="fas fa-sign-out-alt"></i> Wyloguj</a>');
                 } else {
-                  echo('<a type="button" class="btn btn-primary btn-sm" href="login.php"><i class="fa-solid fa-right-to-bracket"></i> Zaloguj się</a>');
+                  echo('<a type="button" class="btn btn-primary btn-sm" href="login.php"><i class="fas fa-sign-in-alt"></i> Zaloguj się</a>');
                 }
               ?>
           </span>
