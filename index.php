@@ -183,7 +183,7 @@
                   <div class="form-group">
                     <label for="remarks">Informacje dodatkowe:</label>
                     <input type="text" class="form-control" id="remarks" aria-describedby="remarks" placeholder="np. TLK 51112 Kociewie">
-                    <small id="remarksHelp" class="form-text text-muted">Na przykład numer pociągu, relacja etc.</small>
+                    <small id="remarksHelp" class="form-text text-muted">Na przykład numer pociągu, relacja etc. Jeśli nic nie chcesz dodawać, pozostaw puste :)</small>
                   </div>
                   <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Dodaj</button>
@@ -216,7 +216,7 @@
           })
         } else {
           console.log('error')
-}
+        }
       }
 
       request.send();
