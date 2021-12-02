@@ -129,37 +129,7 @@
           }
 
           </script>
-      </div>
-
-      <script type="text/javascript">
-        $(window).on('load', function() {
-            $('#disclaimerModal').modal('show');
-        });
-
-
-        // Zmiana pozycji zoomu
-
-      </script>
-      <!-- Page under developement disclaimer -->
-      <div class="modal fade" id="disclaimerModal" tabindex="-1" role="dialog" aria-labelledby="disclaimerModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="disclaimerModalLabel">Uwaga!</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Projekt Obfoć.SE jest ciągle w rozwoju. Należy się spodziewać pewnych niedociągnięć, błędów w funkcjonalności. Staramy się ciągle rozwijać projekt!
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal">Zrozumiano</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      </div>  
       <!-- Add train form -->
       <div class="modal fade" id="addInfo" tabindex="-1" role="dialog" aria-labelledby="addInfoLbl" aria-hidden="true">
         <div class="modal-dialog" role="document">
