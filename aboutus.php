@@ -74,6 +74,7 @@ session_start();
           </div>
         </nav>
         <div class="container">
+            <br />
             <h1>Skąd pomysł na Obfoć.SE</h1>
             <p>Przeglądając grupy informacyjne o składach na facebooku jakimi są np. 
             "<a href="https://www.facebook.com/groups/868055790230479/">Co i gdzie jedzie?</a>"
@@ -105,6 +106,7 @@ session_start();
                     <li><a href="https://popper.js.org/">Pooper 1.12.9</a></li>
                     <li><a href="https://jquery.com/">jQuerry 3.2.1</a></li>
                     <li><a href="https://leafletjs.com/">Leafletjs 1.7.1</a></li>
+                    <li><a href="https://fontawesome.com/">Font Awesome 5.15</a></li>
                 </ul>
             </p>
         </div>
