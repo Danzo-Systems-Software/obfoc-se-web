@@ -165,4 +165,6 @@ fabric.properties
 # Support for Project snippet scope
 !.vscode/*.code-snippets
 
+# Ignore vscode idea
+.idea
 # End of https://www.toptal.com/developers/gitignore/api/laravel,phpunit,visualstudiocode,phpstorm
