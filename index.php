@@ -43,16 +43,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.php"><i class="far fa-map"></i> Mapka <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/index.php"><i class="far fa-map"></i> Mapka <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#addInfo" data-toggle="modal" data-target="#addInfo"><i class="fas fa-pen-alt"></i> Zaaktualizuj pozycję pojazdu</a>
+                <a class="nav-link" href="/#addInfo" data-toggle="modal" data-target="#addInfo"><i class="fas fa-pen-alt"></i> Zaaktualizuj pozycję pojazdu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="aboutus.php"><i class="far fa-address-card"></i> O nas</a>
+                <a class="nav-link" href="/aboutus.php"><i class="far fa-address-card"></i> O nas</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="zestawienia.php"><i class="fas fa-train"></i> Zestawienia</a>
+                <a class="nav-link" href="/zestawienia.php"><i class="fas fa-train"></i> Zestawienia</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,6 +65,11 @@
                   <a class="dropdown-item" href="#"><i class="fas fa-dollar-sign"></i> Jak nas wspomóc?</a>
                 </div>
               </li>
+              <?php 
+                if ($_SESSION["isAdmin"] == TRUE){
+                  echo('<li class="nav-item"><a class="nav-link active" href="/admin/index.php"><i class="fas fa-shield-alt"></i> Panel administratora</a></li>');
+                }
+              ?>
             </ul>
             <span class="navbar-text">
             <!-- user account space -->

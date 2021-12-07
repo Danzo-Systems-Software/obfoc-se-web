@@ -28,7 +28,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <div class="container">
         <nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
-            <a href="index.php" class="btn btn-success btn-sm"><i class="fas fa-arrow-circle-left"></i> </a>
+            <a href="/index.php" class="btn btn-success btn-sm"><i class="fas fa-arrow-circle-left"></i> </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">Logowanie do Obfoć.SE</a> 
