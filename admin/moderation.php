@@ -4,16 +4,7 @@
   if($_SESSION["isdestroyed"]==true){
     session_destroy();
   }
-
-
-
-$mod_reported_accounts = 3;
-$mod_reported_infos = 14;
-
-$mod_alerts_count = $mod_reported_accounts + $mod_reported_infos;
-$new_user_past_week = 47;
-$new_infos_past_week = 83;
-?>
+  ?>
 <!doctype html>
 <html lang="pl">
   <head>
@@ -94,49 +85,6 @@ $new_infos_past_week = 83;
       </nav>
       <div class="container">
         <br />
-
-
-
-        <div class="row">
-
-          <div class="col-sm-6">
-            <div class="card" style="width: 100%;">
-              <div class="card-body">
-              <h5 class="card-title">Moderacja 
-                <?php
-                  if ($mod_alerts_count < 5 && $mod_alerts_count != 0){
-                    echo('<span class="badge bg-secondary" style="color: white">'.$mod_alerts_count.'</span>');
-                  }
-                  else if ($mod_alerts_count >= 5 && $mod_alerts_count < 10){
-                    echo('<span class="badge bg-warning" style="color: white">'.$mod_alerts_count.'</span>');
-                  }
-                  else if($mod_alerts_count == 0){
-                    echo("");
-                  }
-                  else{
-                    echo('<span class="badge bg-danger" style="color: white">'.$mod_alerts_count.'</span>');
-                  }
-                ?></h5>
-              <div class="card-text">
-                  <p><b><?php echo($mod_reported_infos); ?></b> zgłoszonych podejrzeń fałszywej pozycji</p>
-                  <p><b><?php echo($mod_reported_accounts); ?></b> podejrzeń multikont</p>
-              </div>
-                <a href="#" class="btn btn-success btn-sm">Szczegóły</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card" style="width: 100%;">
-              <div class="card-body">
-                <h5 class="card-title">Statystyki</h5>
-                <div class="card-text">
-                  <p><b><?php echo($new_user_past_week);?></b> nowych użytkowników w ciągu ostatniego tygodnia</p>
-                  <p><b><?php echo($new_infos_past_week);?></b> aktualizacji mapy</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </body>
 </html>
