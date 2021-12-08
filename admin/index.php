@@ -105,13 +105,9 @@ $new_infos_past_week = 83;
         </div>
       </nav>
       <div class="container">
-        <br />
-
-
-
         <div class="row">
-
           <div class="col-sm-6">
+          <br />
             <div class="card" style="width: 100%;">
               <div class="card-body">
               <h5 class="card-title">Moderacja 
@@ -138,6 +134,7 @@ $new_infos_past_week = 83;
             </div>
           </div>
           <div class="col-sm-6">
+          <br />
             <div class="card" style="width: 100%;">
               <div class="card-body">
                 <h5 class="card-title">Statystyki</h5>
