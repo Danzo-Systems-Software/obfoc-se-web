@@ -168,3 +168,7 @@ fabric.properties
 # Ignore vscode idea
 .idea
 # End of https://www.toptal.com/developers/gitignore/api/laravel,phpunit,visualstudiocode,phpstorm
+=======
+
+phpinfo.php
+web.config
