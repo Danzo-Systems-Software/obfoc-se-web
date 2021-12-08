@@ -95,9 +95,9 @@ $new_infos_past_week = 83;
               if(isset($_SESSION["username"])){
                 
                 echo("Witaj ".$_SESSION["username"]."! ");
-                echo('<a type="button" class="btn btn-primary btn-sm" href="logout.php"><i class="fas fa-sign-out-alt"></i> Wyloguj</a>');
+                echo('<a type="button" class="btn btn-primary btn-sm" href="/logout.php"><i class="fas fa-sign-out-alt"></i> Wyloguj</a>');
               } else {
-                echo('<a type="button" class="btn btn-primary btn-sm" href="login.php"><i class="fas fa-sign-in-alt"></i> Zaloguj się</a>');
+                echo('<a type="button" class="btn btn-primary btn-sm" href="/login.php"><i class="fas fa-sign-in-alt"></i> Zaloguj się</a>');
               }
             ?>
         </span>
