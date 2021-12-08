@@ -4,7 +4,31 @@
   if($_SESSION["isdestroyed"]==true){
     session_destroy();
   }
-  ?>
+
+
+  
+
+
+
+require "config.php";
+
+// mysql 
+$conn = new mysqli($mysql_hostname, $mysql_username, $mysql_password);
+
+// Conn status
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+$conn -> select_db("cigj");
+
+if (isset($_GET["close"])){
+  $sql_querry = "UPDATE `reports` SET `isOpenned` = '0' WHERE `reports`.`id` = ".$_GET["close"].";";
+  $conn->query($sql_querry);
+  header('Location: '."/admin/moderation.php");
+}
+
+
+?>
 <!doctype html>
 <html lang="pl">
   <head>
@@ -85,6 +109,46 @@
       </nav>
       <div class="container">
         <br />
+          <h1>Lista zgłoszeń</h1>
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Zgłaszający</th>
+                  <th scope="col">Typ zgłoszenia</th>
+                  <th scope="col">Data zgłoszenia</th>
+                  <th scope="col">Treść zgłoszenia</th>
+                  <th scope="col">Dotyczy użytkownika</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                  $sql = "SELECT * FROM `reports`";
+                  $result = $conn->query($sql);
+                  if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+                        echo('<tr><th scope="row">'.$row["id"].'</th>');
+                        echo('<td>'.'<a href="/profile.php?id='.$row["reporter_id"].'">Zobacz profil</a>'.'</td>');
+                        echo('<td>'.$row["report_type"].'</td>');
+                        echo('<td>'.$row["report_date"].'</td>');
+                        echo('<td>'.$row["report_content"].'</td>');
+                        echo('<td>'.'<a href="/profile.php?id='.$row["focuses_on_usrid"].'">Zobacz profil</a>'.'</td>');
+                        if ($row["isOpenned"] == "1"){
+                          echo('<td>Otwarte <a href="/admin/moderation.php?close='.$row['id'].'">(zamknij)</a></td>');
+                        }
+                        else{
+                          echo('<td>Zamknięte</td>');
+
+                        }
+                    }
+                  }
+                ?>
+              </tbody>
+          </table>
+
       </div>
     </body>
 </html>
