@@ -11,7 +11,7 @@
   
   // Conn status
   if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Wystąpił błąd z bazą danych: " . $conn->connect_error);
   }
   $conn -> select_db("cigj");
 
@@ -117,16 +117,16 @@ $new_infos_past_week = 83;
               <h5 class="card-title">Moderacja 
                 <?php
                   if ($mod_alerts_count < 5 && $mod_alerts_count != 0){
-                    echo('<span class="badge bg-secondary" style="color: white">'.$mod_alerts_count.'</span>');
+                    echo('<span class="badge bg-secondary" style="color: white">'.$mod_alerts_count.'</span>'); // w normie
                   }
                   else if ($mod_alerts_count >= 5 && $mod_alerts_count < 10){
-                    echo('<span class="badge bg-warning" style="color: white">'.$mod_alerts_count.'</span>');
+                    echo('<span class="badge bg-warning" style="color: white">'.$mod_alerts_count.'</span>'); // nalezaloby ogarnąć zgloszenia
                   }
                   else if($mod_alerts_count == 0){
                     echo("");
                   }
                   else{
-                    echo('<span class="badge bg-danger" style="color: white">'.$mod_alerts_count.'</span>');
+                    echo('<span class="badge bg-danger" style="color: white">'.$mod_alerts_count.'</span>'); // mode do roboty
                   }
                 ?></h5>
               <div class="card-text">
