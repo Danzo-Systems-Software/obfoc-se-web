@@ -5,10 +5,22 @@
     session_destroy();
   }
 
+  require "config.php";
+  // mysql 
+  $conn = new mysqli($mysql_hostname, $mysql_username, $mysql_password);
+  
+  // Conn status
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  $conn -> select_db("cigj");
+
+  $result = $conn -> query("SELECT count(*) AS total FROM reports WHERE isOpenned = 1;");
+  $data= $result -> fetch_assoc();
 
 
-$mod_reported_accounts = 3;
-$mod_reported_infos = 14;
+$mod_security_violations = 0;
+$mod_reported_infos = $data['total'];
 
 $mod_alerts_count = $mod_reported_accounts + $mod_reported_infos;
 $new_user_past_week = 47;
@@ -118,10 +130,10 @@ $new_infos_past_week = 83;
                   }
                 ?></h5>
               <div class="card-text">
-                  <p><b><?php echo($mod_reported_infos); ?></b> zgłoszonych podejrzeń fałszywej pozycji</p>
-                  <p><b><?php echo($mod_reported_accounts); ?></b> podejrzeń multikont</p>
+                  <p><b><?php echo($mod_reported_infos); ?></b> zgłoszeń;</p>
+                  <p><b><?php echo($mod_security_violations); ?></b> problemów z bezpieczeństwem</p>
               </div>
-                <a href="#" class="btn btn-success btn-sm">Szczegóły</a>
+                <a href="/admin/moderation.php?" class="btn btn-success btn-sm">Szczegóły</a>
               </div>
             </div>
           </div>

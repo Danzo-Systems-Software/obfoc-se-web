@@ -4,14 +4,7 @@
   if($_SESSION["isdestroyed"]==true){
     session_destroy();
   }
-
-
-  
-
-
-
 require "config.php";
-
 // mysql 
 $conn = new mysqli($mysql_hostname, $mysql_username, $mysql_password);
 
