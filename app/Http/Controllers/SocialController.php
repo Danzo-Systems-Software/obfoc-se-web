@@ -34,7 +34,7 @@ class SocialController extends Controller
                 if($isUser->banned ==1){
                     return redirect()->route('banned');
                 }
-
+//1
             }else{
                 $createUser = User::create([
                     'name' => $user->name,
