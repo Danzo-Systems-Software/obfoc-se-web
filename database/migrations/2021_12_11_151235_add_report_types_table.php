@@ -13,7 +13,7 @@ class AddReportTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('reportTypes', function (Blueprint $table) {
+        Schema::create('report_Types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
         });
