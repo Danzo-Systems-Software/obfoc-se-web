@@ -29,6 +29,13 @@ class ReportTypesRouteTest extends TestCase
         $response->assertRedirect('/login');
     }
 
+    public function testGuestUserHasNoAccessToReportTypesStore()
+    {
+        $response = $this->post(route('reportTypes.store'), ['name' => 'test']);
+        $response->assertStatus(302);
+        $response->assertRedirect('/login');
+    }
+
     public function testGuestUserHasNoAccessToReportTypesEdit()
     {
         $reportType = reportType::factory()->create(['name' => 'test']);
@@ -62,6 +69,16 @@ class ReportTypesRouteTest extends TestCase
         $response = $this->actingAs($user)->get(route('reportTypes.create'));
 
         $response->assertStatus(200);
+        $user->delete();
+    }
+
+    public function testAuthUserHasAccessToReportTypesStore()
+    {
+        $user = User::factory()->create();
+        $response = $this->actingAs($user)->post(route('reportTypes.store', 'testaaa'));
+
+        $response->assertStatus(302);
+        $response->assertRedirect('/');
         $user->delete();
     }
 
