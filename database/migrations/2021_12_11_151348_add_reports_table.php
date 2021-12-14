@@ -15,11 +15,11 @@ class AddReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->integer('reporterId')->references('id')->on('users');
-            $table->integer('reportType')->references('id')->on('reportTypes');
+            $table->integer('reporterID')->references('id')->on('users');
+            $table->integer('reportTypeID')->references('id')->on('reportTypes');
             $table->timestamp('addedOn');
             $table->string('reportContent');
-            $table->integer('focusesOnUser')->references('id')->on('users');
+            $table->integer('focusesOnUser')->nullable()->references('id')->on('users');
             $table->integer('isOpenned')->nullable()->default(1);
         });
     }
