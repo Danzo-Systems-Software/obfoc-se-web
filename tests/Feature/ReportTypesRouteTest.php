@@ -41,44 +41,46 @@ class ReportTypesRouteTest extends TestCase
     {
         $reportType = reportType::factory()->create(['name' => 'test']);
         $response = $this->get(route('reportTypes.edit', $reportType->id));
+        $reportType->delete();
         $response->assertStatus(302);
         $response->assertRedirect('/login');
-        $reportType->delete();
+
     }
 
     public function testGuestUserHasNoAccessToReportTypesDestroy()
     {
         $reportType = reportType::factory()->create(['name' => 'test']);
         $response = $this->put(route('reportTypes.destroy', $reportType));
+        $reportType->delete();
         $response->assertStatus(302);
         $response->assertRedirect('/login');
-        $reportType->delete();
+
     }
 
     public function testUserHasNoAccessToReportTypesIndex()
     {
         $user = User::factory()->create(['role'=> UserRole::USER]);
         $response = $this->actingAs($user)->get(route('reportTypes.index'));
-
-        $response->assertStatus(403);
         $user->delete();
+        $response->assertStatus(403);
+
     }
 
     public function testUserHasNoAccessToReportTypesCreate()
     {
         $user = User::factory()->create(['role'=> UserRole::USER]);
         $response = $this->actingAs($user)->get(route('reportTypes.create'));
-
-        $response->assertStatus(403);
         $user->delete();
+        $response->assertStatus(403);
+
     }
     public function testUserHasNoAccessToReportTypesStore()
     {
         $user = User::factory()->create(['role'=> UserRole::USER]);
         $response = $this->actingAs($user)->post(route('reportTypes.store', 'testaaa'));
-
-        $response->assertStatus(403);
         $user->delete();
+        $response->assertStatus(403);
+
     }
 
     public function testUserHasNoAccessToReportTypesEdit()
@@ -86,9 +88,10 @@ class ReportTypesRouteTest extends TestCase
         $user = User::factory()->create(['role'=> UserRole::USER]);
         $reportType = reportType::factory()->create(['name' => 'test']);
         $response = $this->actingAs($user)->get(route('reportTypes.edit', $reportType));
-        $response->assertStatus(403);
         $user->delete();
         $reportType->delete();
+        $response->assertStatus(403);
+
     }
 
     public function testUserHasNoAccessToReportTypesDestroy()
@@ -96,37 +99,38 @@ class ReportTypesRouteTest extends TestCase
         $user = User::factory()->create(['role'=> UserRole::USER]);
         $reportType = reportType::factory()->create(['name' => 'test']);
         $response = $this->actingAs($user)->delete(route('reportTypes.destroy', $reportType));
-        $response->assertStatus(403);
         $user->delete();
         $reportType->delete();
+        $response->assertStatus(403);
+
     }
 
     public function testAdminUserHasAccessToReportTypesIndex()
     {
         $user = User::factory()->create(['role'=> UserRole::ADMIN]);
         $response = $this->actingAs($user)->get(route('reportTypes.index'));
-
-        $response->assertStatus(200);
         $user->delete();
+        $response->assertStatus(200);
+
     }
 
     public function testAdminUserHasAccessToReportTypesCreate()
     {
         $user = User::factory()->create(['role'=> UserRole::ADMIN]);
         $response = $this->actingAs($user)->get(route('reportTypes.create'));
-
-        $response->assertStatus(200);
         $user->delete();
+        $response->assertStatus(200);
+
     }
 
     public function testAdminUserHasAccessToReportTypesStore()
     {
         $user = User::factory()->create(['role'=> UserRole::ADMIN]);
         $response = $this->actingAs($user)->post(route('reportTypes.store', 'testaaa'));
-
+        $user->delete();
         $response->assertStatus(302);
         $response->assertRedirect('/');
-        $user->delete();
+
     }
 
     public function testAdminUserHasAccessToReportTypesEdit()
@@ -134,9 +138,10 @@ class ReportTypesRouteTest extends TestCase
         $user = User::factory()->create(['role'=> UserRole::ADMIN]);
         $reportType = reportType::factory()->create(['name' => 'test']);
         $response = $this->actingAs($user)->get(route('reportTypes.edit', $reportType));
-        $response->assertStatus(200);
         $user->delete();
         $reportType->delete();
+        $response->assertStatus(200);
+
     }
 
     public function testAdminUserHasAccessToReportTypesDestroy()
@@ -144,9 +149,10 @@ class ReportTypesRouteTest extends TestCase
         $user = User::factory()->create(['role'=> UserRole::ADMIN]);
         $reportType = reportType::factory()->create(['name' => 'test']);
         $response = $this->actingAs($user)->delete(route('reportTypes.destroy', $reportType));
-        $response->assertStatus(302);
         $user->delete();
         $reportType->delete();
+        $response->assertStatus(302);
+
     }
 
 
