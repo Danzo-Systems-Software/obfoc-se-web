@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use App\Models\reportType;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -26,7 +28,7 @@ class ReportController extends Controller
      */
     public function create()
     {
-        return view('reports.create');
+        return view('reports.create', ['reportTypes' => reportType::all(), 'users' => User::all()]);
     }
 
     /**

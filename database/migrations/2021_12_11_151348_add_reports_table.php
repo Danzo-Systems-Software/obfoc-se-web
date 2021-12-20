@@ -20,7 +20,7 @@ class AddReportsTable extends Migration
 
             $table->unsignedBigInteger('reportTypeID')->nullable();
 
-            $table->timestamp('addedOn');
+            $table->timestamp('addedOn')->nullable();
             $table->string('reportContent');
             $table->unsignedBigInteger('focusesOnUser')->nullable();
 
