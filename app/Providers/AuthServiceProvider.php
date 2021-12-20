@@ -28,6 +28,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         $this->defineUserRoleGate('isAdmin',UserRole::ADMIN);
         $this->defineUserRoleGate('isUser',UserRole::USER);
+        $this->defineUserRoleGate('isBanned',UserRole::BANNED);
         //
     }
 
