@@ -13,7 +13,8 @@ class AddReportTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('report_Types', function (Blueprint $table) {
+        Schema::create('report_types', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->string('name');
         });

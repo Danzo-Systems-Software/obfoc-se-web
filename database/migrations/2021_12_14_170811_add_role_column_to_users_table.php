@@ -14,6 +14,7 @@ class AddRoleColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->enum('role', UserRole::TYPES)->default(UserRole::USER);
         });
     }

@@ -14,12 +14,14 @@ class AddPositionsTable extends Migration
     public function up()
     {
         Schema::create('positions', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->string('vehicleName');
             $table->float('latitude');
             $table->float('longitude');
             $table->timestamp('postDate');
-            $table->integer('updatedById')->references('id')->on('users');
+            $table->unsignedBigInteger('updatedById')->nullable();
+            $table->foreign('updatedById')->references('id')->on('users');
             $table->string('postNotes');
         });
     }

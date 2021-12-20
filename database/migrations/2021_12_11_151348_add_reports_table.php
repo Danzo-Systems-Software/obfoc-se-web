@@ -14,13 +14,21 @@ class AddReportsTable extends Migration
     public function up()
     {
         Schema::create('reports', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
-            $table->integer('reporterID')->references('id')->on('users');
-            $table->integer('reportTypeID')->references('id')->on('reportTypes');
+            $table->unsignedBigInteger('reporterID')->nullable();
+
+            $table->unsignedBigInteger('reportTypeID')->nullable();
+
             $table->timestamp('addedOn');
             $table->string('reportContent');
-            $table->integer('focusesOnUser')->nullable()->references('id')->on('users');
+            $table->unsignedBigInteger('focusesOnUser')->nullable();
+
             $table->integer('isOpenned')->nullable()->default(1);
+
+            $table->foreign('reporterID')->references('id')->on('users');
+            $table->foreign('reportTypeID')->references('id')->on('report_types');
+            $table->foreign('focusesOnUser')->references('id')->on('users');
         });
     }
 
