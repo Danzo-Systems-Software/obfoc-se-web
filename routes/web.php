@@ -30,10 +30,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('reports', ReportController::class)->only(['show', 'create', 'store']);
 });
 
-
-Route::get('/banned', function () {
-    return view("banned");
-})->name('banned');
+Route::middleware(['auth', 'can:isBanned'])->group(function () {
+    Route::get('/banned', function () {
+        return view("banned");
+    })->name('banned');
+});
 
 Route::get('auth/facebook', [SocialController::class, 'facebookRedirect']);
 
