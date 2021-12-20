@@ -28,9 +28,9 @@ class AddForeignKeyToPositionsTable extends Migration
     public function down()
     {
         Schema::table('positions', function (Blueprint $table) {
-            //$table->dropForeign('vehicleid');
-            //$table->dropColumn('vehicleid');
-            //$table->string('vehicleName');
+            $table->dropForeign('vehicleid');
+            $table->dropColumn('vehicleid');
+            $table->string('vehicleName');
         });
     }
 }
