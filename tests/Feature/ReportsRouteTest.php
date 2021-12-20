@@ -33,6 +33,20 @@ class ReportsRouteTest extends TestCase
         $response->assertRedirect('/login');
     }
 
+    public function testGuestUserHasNoAccessToReportsShow()
+    {
+        $user = User::factory()->create(['role'=> UserRole::USER]);
+        $user2 = User::factory()->create(['role'=> UserRole::USER]);
+        $reportType = reportType::factory()->create(['name' => 'test']);
+        $report = Report::factory()->create(['reporterID' => $user->id, 'reportTypeID' => $reportType->id, 'focusesOnUser' => $user2->id]);
+        $response = $this->get(route('reports.show', $report->id));
+        $report->delete();
+        $reportType->delete();
+        $user->delete();
+        $user2->delete();
+        $response->assertStatus(302);
+        $response->assertRedirect('/login');
+    }
     public function testGuestUserHasNoAccessToReportsEdit()
     {
         $reportType = reportType::factory()->create(['name' => 'test']);
@@ -40,7 +54,10 @@ class ReportsRouteTest extends TestCase
         $user2 = User::factory()->create(['role'=> UserRole::USER]);
         $report = Report::factory()->create(['reporterID' => $user->id, 'reportTypeID' => $reportType->id, 'focusesOnUser' => $user2->id]);
         $response = $this->get(route('reports.edit', $report->id));
+        $report->delete();
         $reportType->delete();
+        $user->delete();
+        $user2->delete();
         $response->assertStatus(302);
         $response->assertRedirect('/login');
 
@@ -53,10 +70,10 @@ class ReportsRouteTest extends TestCase
         $user2 = User::factory()->create(['role'=> UserRole::USER]);
         $report = Report::factory()->create(['reporterID' => $user->id, 'reportTypeID' => $reportType->id, 'focusesOnUser' => $user2->id]);
         $response = $this->put(route('reports.destroy', $report));
+        $report->delete();
         $reportType->delete();
         $user->delete();
         $user2->delete();
-        $report->delete();
         $response->assertStatus(302);
         $response->assertRedirect('/login');
 
@@ -71,7 +88,7 @@ class ReportsRouteTest extends TestCase
 
     }
 
-    public function testUserHasNoAccessToReportsCreate()
+    public function testUserHasAccessToReportsCreate()
     {
         $user = User::factory()->create(['role'=> UserRole::USER]);
         $response = $this->actingAs($user)->get(route('reports.create'));
@@ -79,19 +96,34 @@ class ReportsRouteTest extends TestCase
         $response->assertStatus(200);
 
     }
-    public function testUserHasNoAccessToReportsStore()
+    public function testUserHasAccessToReportsStore()
     {
         $user = User::factory()->create(['role'=> UserRole::USER]);
         $user2 = User::factory()->create(['role'=> UserRole::USER]);
         $reportType = reportType::factory()->create(['name' => 'test']);
         $report = Report::factory()->create(['reporterID' => $user->id, 'reportTypeID' => $reportType->id, 'focusesOnUser' => $user2->id]);
         $response = $this->actingAs($user)->post(route('reports.store', ['reporterID' => $report->reporterID, 'reportTypeID' => $report->reportTypeID, 'addedOn' => $report->addedOn, 'reportContent' => $report->reportContent, 'focusesOnUser' => $report->focusesOnUser, 'isOpenned' => $report->isOpenned]));
+        $report->delete();
+        $reportType->delete();
         $user->delete();
         $user2->delete();
-        $reportType->delete();
-        $report->delete();
         $response->assertStatus(302);
         $response->assertRedirect('/');
+
+    }
+
+    public function testUserHasAccessToReportsShow()
+    {
+        $user = User::factory()->create(['role'=> UserRole::USER]);
+        $user2 = User::factory()->create(['role'=> UserRole::USER]);
+        $reportType = reportType::factory()->create(['name' => 'test']);
+        $report = Report::factory()->create(['reporterID' => $user->id, 'reportTypeID' => $reportType->id, 'focusesOnUser' => $user2->id]);
+        $response = $this->actingAs($user)->get(route('reports.show', $report));
+        $report->delete();
+        $reportType->delete();
+        $user->delete();
+        $user2->delete();
+        $response->assertStatus(200);
 
     }
 
@@ -102,10 +134,10 @@ class ReportsRouteTest extends TestCase
         $reportType = reportType::factory()->create(['name' => 'test']);
         $report = Report::factory()->create(['reporterID' => $user->id, 'reportTypeID' => $reportType->id, 'focusesOnUser' => $user2->id]);
         $response = $this->actingAs($user)->get(route('reports.edit', $report));
+        $report->delete();
+        $reportType->delete();
         $user->delete();
         $user2->delete();
-        $reportType->delete();
-        $report->delete();
         $response->assertStatus(403);
 
     }
@@ -117,10 +149,11 @@ class ReportsRouteTest extends TestCase
         $user2 = User::factory()->create(['role'=> UserRole::USER]);
         $report = Report::factory()->create(['reporterID' => $user->id, 'reportTypeID' => $reportType->id, 'focusesOnUser' => $user2->id]);
         $response = $this->actingAs($user)->delete(route('reports.destroy', $report));
-        $user->delete();
+        $report->delete();
+
         $reportType->delete();
         $user2->delete();
-        $report->delete();
+        $user->delete();
         $response->assertStatus(403);
 
     }
@@ -150,13 +183,27 @@ class ReportsRouteTest extends TestCase
         $reportType = reportType::factory()->create(['name' => 'test']);
         $report = Report::factory()->create(['reporterID' => $user->id, 'reportTypeID' => $reportType->id, 'focusesOnUser' => $user2->id]);
         $response = $this->actingAs($user)->post(route('reports.store', ['reporterID' => $report->reporterID, 'reportTypeID' => $report->reportTypeID, 'addedOn' => $report->addedOn, 'reportContent' => $report->reportContent, 'focusesOnUser' => $report->focusesOnUser, 'isOpenned' => $report->isOpenned]));
+        $report->delete();
+        $reportType->delete();
         $user->delete();
         $user2->delete();
-        $reportType->delete();
-        $report->delete();
         $response->assertStatus(302);
         $response->assertRedirect('/');
 
+    }
+
+    public function testAdminUserHasAccessToReportsShow()
+    {
+        $user = User::factory()->create(['role'=> UserRole::ADMIN]);
+        $user2 = User::factory()->create(['role'=> UserRole::USER]);
+        $reportType = reportType::factory()->create(['name' => 'test']);
+        $report = Report::factory()->create(['reporterID' => $user->id, 'reportTypeID' => $reportType->id, 'focusesOnUser' => $user2->id]);
+        $response = $this->actingAs($user)->get(route('reports.show', $report));
+        $report->delete();
+        $reportType->delete();
+        $user->delete();
+        $user2->delete();
+        $response->assertStatus(200);
     }
 
     public function testAdminUserHasAccessToReportsEdit()
@@ -166,8 +213,9 @@ class ReportsRouteTest extends TestCase
         $reportType = reportType::factory()->create(['name' => 'test']);
         $report = Report::factory()->create(['reporterID' => $user->id, 'reportTypeID' => $reportType->id, 'focusesOnUser' => $user2->id]);
         $response = $this->actingAs($user)->get(route('reports.edit', $report));
-        $user->delete();
+        $report->delete();
         $reportType->delete();
+        $user->delete();
         $response->assertStatus(200);
 
     }
